@@ -1,4 +1,5 @@
 <!-- src/components/HeaderComponent.vue -->
+
 <template>
     <header class="header">
         <div class="left">
@@ -17,15 +18,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import darkModeIcon from '@/assets/dark-mode.svg';
-import lightModeIcon from '@/assets/light-mode.svg';
+import { useTheme } from '../composables/useTheme';
+
+import darkModeIcon from '@/assets/icons/dark-mode.svg';
+import lightModeIcon from '@/assets/icons/light-mode.svg';
 
 export default defineComponent({
     name: 'HeaderComponent',
     setup() {
         const { locale } = useI18n();
+        const { isDarkMode, toggleTheme } = useTheme();
 
         const currentLocale = computed({
             get: () => locale.value,
@@ -33,21 +37,6 @@ export default defineComponent({
                 locale.value = val;
             },
         });
-
-        const isDarkMode = ref(false);
-
-        // Следим за изменениями isDarkMode и обновляем класс на body
-        watch(isDarkMode, (newVal) => {
-            if (newVal) {
-                document.body.classList.add('dark');
-            } else {
-                document.body.classList.remove('dark');
-            }
-        }, { immediate: true });
-
-        const toggleTheme = () => {
-            isDarkMode.value = !isDarkMode.value;
-        };
 
         return {
             currentLocale,

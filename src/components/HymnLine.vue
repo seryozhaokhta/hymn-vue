@@ -27,12 +27,11 @@ import {
     watch,
     onMounted,
     computed,
-    nextTick,
 } from 'vue';
 import gsap from 'gsap';
 
-import expandIcon from '@/assets/expand-line.svg';
-import hideIcon from '@/assets/hide-line.svg';
+import expandIcon from '@/assets/icons/expand-line.svg';
+import hideIcon from '@/assets/icons/hide-line.svg';
 
 interface Transliterations {
     transliteration: string;
@@ -71,24 +70,29 @@ export default defineComponent({
 
         watch(
             () => isActive.value,
-            async (newVal) => {
+            (newVal) => {
                 if (detailsElement.value) {
                     if (newVal) {
                         isExpanded.value = true;
-                        await nextTick();
                         gsap.to(detailsElement.value, {
                             height: 'auto',
                             opacity: 1,
-                            duration: 0.5,
-                            ease: 'power2.out',
+                            duration: 0.3, // Уменьшили длительность для плавности
+                            ease: 'power1.out',
+                            onStart: () => {
+                                detailsElement.value!.style.display = 'block';
+                            },
                         });
                     } else {
-                        isExpanded.value = false;
                         gsap.to(detailsElement.value, {
                             height: 0,
                             opacity: 0,
-                            duration: 0.5,
-                            ease: 'power2.in',
+                            duration: 0.3, // Уменьшили длительность для плавности
+                            ease: 'power1.in',
+                            onComplete: () => {
+                                isExpanded.value = false;
+                                detailsElement.value!.style.display = 'none';
+                            },
                         });
                     }
                 }
@@ -98,17 +102,15 @@ export default defineComponent({
 
         const toggleDetails = () => {
             if (isExpanded.value) {
-                // Скрыть текущую строку
                 emit('setActiveLine', null);
             } else {
-                // Показать текущую строку
                 emit('setActiveLine', props.line.number);
             }
         };
 
         onMounted(() => {
             if (detailsElement.value) {
-                gsap.set(detailsElement.value, { height: 0, opacity: 0 });
+                gsap.set(detailsElement.value, { height: 0, opacity: 0, display: 'none' });
             }
         });
 
@@ -128,7 +130,8 @@ export default defineComponent({
 .translation-line {
     position: relative;
     margin-bottom: 20px;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.3s ease;
+    /* Уменьшили длительность для плавности */
 }
 
 .toggle-details {
@@ -145,5 +148,7 @@ export default defineComponent({
 
 .details {
     overflow: hidden;
+    display: none;
+    /* Изначально скрыто */
 }
 </style>

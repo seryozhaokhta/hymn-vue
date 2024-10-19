@@ -6,7 +6,8 @@ body {
   font-family: var(--font-family);
 }
 
-h1, h2 {
+h1,
+h2 {
   color: var(--primary-color);
 }
 
@@ -27,7 +28,8 @@ h1, h2 {
   filter: invert(1);
 }
 
-.button, .toggle-theme img {
+.button,
+.toggle-theme img {
   filter: invert(0);
 }
 
@@ -35,6 +37,7 @@ body.dark .toggle-details img {
   filter: invert(0);
 }
 
-body.dark .button, body.dark .toggle-theme img {
+body.dark .button,
+body.dark .toggle-theme img {
   filter: invert(1);
 }

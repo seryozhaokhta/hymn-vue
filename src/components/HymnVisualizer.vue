@@ -14,9 +14,28 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 import HymnLine from './HymnLine.vue';
-import dataEn from '@/assets/data-en.json';
-import dataRu from '@/assets/data-ru.json';
+import dataEn from '@/assets/data/data-en.json';
+import dataRu from '@/assets/data/data-ru.json';
 import { useI18n } from 'vue-i18n';
+
+interface Section {
+    name: string;
+    lines: HymnLineData[];
+}
+
+interface HymnLineData {
+    number: string;
+    sumerian_text: string;
+    transliterations: Transliterations;
+    translation: string;
+    explanation: string;
+}
+
+interface Transliterations {
+    transliteration: string;
+    word_by_word: string;
+    simplified: string;
+}
 
 export default defineComponent({
     name: 'HymnVisualizer',
@@ -26,7 +45,9 @@ export default defineComponent({
     setup() {
         const { locale } = useI18n();
 
-        const data = computed(() => {
+        const data = computed<{
+            sections: Section[];
+        }>(() => {
             return locale.value === 'ru' ? dataRu : dataEn;
         });
 

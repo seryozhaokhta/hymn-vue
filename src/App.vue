@@ -1,4 +1,5 @@
 <!-- src/App.vue -->
+
 <template>
   <div id="app">
     <HeaderComponent />
@@ -21,7 +22,6 @@ export default defineComponent({
 </script>
 
 <style>
-/* Глобальные стили */
 body {
   font-family: var(--font-family);
   background-color: var(--background-color);
