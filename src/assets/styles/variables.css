@@ -1,5 +1,10 @@
+/* src/assets/styles/variables.css */
+
+/* Импортируем шрифт Roboto с поддержкой кириллицы */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
-  --font-family: 'Helvetica';
+  --font-family: 'Roboto', sans-serif;
   --background-color: #f4f4f4;
   --text-color: #333;
   --primary-color: #000000;
@@ -9,4 +14,14 @@
   --translation-color: #777;
   --explanation-bg-color: #eef;
   --toggle-button-color: #333;
+}
+
+/* Тёмный режим */
+body.dark {
+  --background-color: #242424;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --border-color: #555;
+  --sumerian-text-color: #aaa;
+  --translation-color: #ccc;
+  --explanation-bg-color: #333;
 }

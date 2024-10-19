@@ -1,0 +1,40 @@
+/* src/assets/styles/styles.css */
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+h1, h2 {
+  color: var(--primary-color);
+}
+
+.translation-line {
+  color: var(--translation-color);
+}
+
+.details {
+  background-color: var(--explanation-bg-color);
+  color: var(--text-color);
+}
+
+.sumerian-text {
+  color: var(--sumerian-text-color);
+}
+
+.toggle-details img {
+  filter: invert(1);
+}
+
+.button, .toggle-theme img {
+  filter: invert(0);
+}
+
+body.dark .toggle-details img {
+  filter: invert(0);
+}
+
+body.dark .button, body.dark .toggle-theme img {
+  filter: invert(1);
+}

@@ -1,3 +1,5 @@
+<!-- src/components/HymnLine.vue -->
+
 <template>
     <div class="translation-line" :style="{ opacity: isActive || !activeLineNumber ? 1 : 0.5 }">
         <span>{{ line.translation }}</span>
@@ -10,7 +12,7 @@
             <p class="word-by-word">{{ line.transliterations.word_by_word }}</p>
             <p class="simplified">{{ line.transliterations.simplified }}</p>
             <div class="explanation">
-                <strong>Explanation:</strong>
+                <strong>{{ $t('explanation') }}:</strong>
                 <p>{{ line.explanation }}</p>
             </div>
         </div>
@@ -25,6 +27,7 @@ import {
     watch,
     onMounted,
     computed,
+    nextTick,
 } from 'vue';
 import gsap from 'gsap';
 
@@ -67,11 +70,12 @@ export default defineComponent({
         });
 
         watch(
-            () => props.activeLineNumber,
-            () => {
+            () => isActive.value,
+            async (newVal) => {
                 if (detailsElement.value) {
-                    if (isActive.value) {
+                    if (newVal) {
                         isExpanded.value = true;
+                        await nextTick();
                         gsap.to(detailsElement.value, {
                             height: 'auto',
                             opacity: 1,

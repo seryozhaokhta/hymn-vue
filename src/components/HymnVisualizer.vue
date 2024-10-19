@@ -1,6 +1,9 @@
+<!-- src/components/HymnVisualizer.vue -->
+
 <template>
     <div id="hymn-container">
         <div v-for="(section, sectionIndex) in data.sections" :key="sectionIndex" class="hymn-section">
+            <h2>{{ section.name }}</h2>
             <div v-for="(line, lineIndex) in section.lines" :key="lineIndex">
                 <HymnLine :line="line" :activeLineNumber="activeLineNumber" @setActiveLine="setActiveLine" />
             </div>
@@ -9,9 +12,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 import HymnLine from './HymnLine.vue';
-import data from '@/assets/data.json';
+import dataEn from '@/assets/data-en.json';
+import dataRu from '@/assets/data-ru.json';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
     name: 'HymnVisualizer',
@@ -19,7 +24,12 @@ export default defineComponent({
         HymnLine,
     },
     setup() {
-        const hymnData = ref(data);
+        const { locale } = useI18n();
+
+        const data = computed(() => {
+            return locale.value === 'ru' ? dataRu : dataEn;
+        });
+
         const activeLineNumber = ref<string | null>(null);
 
         const setActiveLine = (lineNumber: string | null) => {
@@ -27,7 +37,7 @@ export default defineComponent({
         };
 
         return {
-            data: hymnData,
+            data,
             activeLineNumber,
             setActiveLine,
         };
@@ -49,5 +59,9 @@ export default defineComponent({
 .hymn-section:last-child {
     border-bottom: none;
     margin-bottom: 0;
+}
+
+.hymn-section h2 {
+    margin-top: 0;
 }
 </style>

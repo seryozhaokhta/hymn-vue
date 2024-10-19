@@ -1,17 +1,20 @@
+<!-- src/App.vue -->
 <template>
   <div id="app">
-    <h1>Exaltation of Inanna</h1>
+    <HeaderComponent />
     <HymnVisualizer />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import HeaderComponent from './components/HeaderComponent.vue';
 import HymnVisualizer from './components/HymnVisualizer.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
+    HeaderComponent,
     HymnVisualizer,
   },
 });
