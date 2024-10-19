@@ -1,10 +1,9 @@
 <!-- src/components/HymnLine.vue -->
-
 <template>
     <div class="translation-line" :style="{ opacity: isActive || !activeLineNumber ? 1 : 0.5 }">
         <span>{{ line.translation }}</span>
         <button class="toggle-details" @click="toggleDetails">
-            <img :src="isExpanded ? hideIcon : expandIcon" alt="Toggle" />
+            <img :src="isExpanded ? hideIcon : expandIcon" alt="Toggle Details" />
         </button>
         <div class="details" ref="detailsElement">
             <p class="sumerian-text">{{ line.sumerian_text }}</p>
@@ -126,29 +125,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.translation-line {
-    position: relative;
-    margin-bottom: 20px;
-    transition: opacity 0.3s ease;
-    /* Уменьшили длительность для плавности */
-}
-
-.toggle-details {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0 5px;
-}
-
-.toggle-details img {
-    width: 20px;
-    height: 20px;
-}
-
-.details {
-    overflow: hidden;
-    display: none;
-    /* Изначально скрыто */
-}
-</style>
+<style scoped src="../assets/styles/HeaderStyles.css"></style>

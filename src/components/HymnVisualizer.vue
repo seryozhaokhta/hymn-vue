@@ -1,5 +1,4 @@
 <!-- src/components/HymnVisualizer.vue -->
-
 <template>
     <div id="hymn-container">
         <div v-for="(section, sectionIndex) in data.sections" :key="sectionIndex" class="hymn-section">

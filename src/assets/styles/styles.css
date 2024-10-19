@@ -25,7 +25,8 @@ h2 {
 }
 
 .toggle-details img {
-  filter: invert(1);
+  /* Удаляем фильтр invert, чтобы иконки отображались в оригинальных цветах */
+  filter: none;
 }
 
 .button,
@@ -34,7 +35,7 @@ h2 {
 }
 
 body.dark .toggle-details img {
-  filter: invert(0);
+  filter: none;
 }
 
 body.dark .button,
