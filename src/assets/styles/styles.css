@@ -25,7 +25,7 @@ h2 {
 }
 
 .toggle-details img {
-  /* Удаляем фильтр invert, чтобы иконки отображались в оригинальных цветах */
+  border: none;
   filter: none;
 }
 

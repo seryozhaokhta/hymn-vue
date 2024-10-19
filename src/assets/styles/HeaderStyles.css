@@ -80,13 +80,25 @@
     color: #000000;
 }
 
-/* Восстановление стилей для иконок */
-.toggle-details img {
-    /* Удаляем фильтр invert, чтобы иконки отображались в оригинальных цветах */
-    filter: none;
+/* Стили для кнопок раскрытия и закрытия пояснений */
+.toggle-details {
+    background: none; /* Убираем фон */
+    border: none;     /* Убираем обводку */
+    cursor: pointer;
+    padding: 0;       /* Убираем внутренние отступы */
+    margin-left: 8px; /* Отступ слева для иконки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.toggle-details img {
+    filter: none;      /* Удаляем фильтр invert, чтобы иконки отображались в оригинальных цветах */
+    width: 20px;       /* Размер иконок */
+    height: 20px;
+}
+
+/* Убедимся, что кнопки языка не влияют на расположение иконок */
 .header-right .language-button img {
-    /* Если есть иконки внутри кнопок языка, удаляем фильтр */
-    filter: none;
+    filter: none; /* Убираем фильтр, если иконки есть */
 }

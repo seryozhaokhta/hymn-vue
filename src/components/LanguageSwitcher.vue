@@ -1,4 +1,5 @@
 <!-- src/components/LanguageSwitcher.vue -->
+
 <template>
     <div class="language-switcher">
         <div class="highlight" ref="highlight"></div>
@@ -17,7 +18,7 @@
 import { defineComponent, ref, onMounted, onUnmounted, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import gsap from 'gsap';
-import { throttle } from 'lodash';
+import throttle from 'lodash/throttle'; // Изменён способ импорта
 
 export default defineComponent({
     name: 'LanguageSwitcher',
@@ -39,8 +40,8 @@ export default defineComponent({
                 gsap.to(highlight.value, {
                     left: activeButton.offsetLeft,
                     width: activeButton.offsetWidth,
-                    duration: 0.3,
-                    ease: 'power1.out',
+                    duration: 0.5, // Увеличили длительность для плавности
+                    ease: 'power2.out', // Изменили тип easing для более плавной анимации
                 });
             }
         }, 100); // Throttle до раз в 100мс

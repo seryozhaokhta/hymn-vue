@@ -1,19 +1,20 @@
 <!-- src/components/HymnLine.vue -->
+
 <template>
     <div class="translation-line" :style="{ opacity: isActive || !activeLineNumber ? 1 : 0.5 }">
-        <span>{{ line.translation }}</span>
+        <span class="translation-text">{{ line.translation }}</span>
         <button class="toggle-details" @click="toggleDetails">
             <img :src="isExpanded ? hideIcon : expandIcon" alt="Toggle Details" />
         </button>
-        <div class="details" ref="detailsElement">
-            <p class="sumerian-text">{{ line.sumerian_text }}</p>
-            <p class="transliteration">{{ line.transliterations.transliteration }}</p>
-            <p class="word-by-word">{{ line.transliterations.word_by_word }}</p>
-            <p class="simplified">{{ line.transliterations.simplified }}</p>
-            <div class="explanation">
-                <strong>{{ $t('explanation') }}:</strong>
-                <p>{{ line.explanation }}</p>
-            </div>
+    </div>
+    <div class="details" ref="detailsElement">
+        <p class="sumerian-text">{{ line.sumerian_text }}</p>
+        <p class="transliteration">{{ line.transliterations.transliteration }}</p>
+        <p class="word-by-word">{{ line.transliterations.word_by_word }}</p>
+        <p class="simplified">{{ line.transliterations.simplified }}</p>
+        <div class="explanation">
+            <strong>{{ $t('explanation') }}:</strong>
+            <p>{{ line.explanation }}</p>
         </div>
     </div>
 </template>
@@ -76,8 +77,8 @@ export default defineComponent({
                         gsap.to(detailsElement.value, {
                             height: 'auto',
                             opacity: 1,
-                            duration: 0.3, // Уменьшили длительность для плавности
-                            ease: 'power1.out',
+                            duration: 0.5, // Увеличили длительность для плавности
+                            ease: 'power2.out', // Изменили тип easing для более плавной анимации
                             onStart: () => {
                                 detailsElement.value!.style.display = 'block';
                             },
@@ -86,8 +87,8 @@ export default defineComponent({
                         gsap.to(detailsElement.value, {
                             height: 0,
                             opacity: 0,
-                            duration: 0.3, // Уменьшили длительность для плавности
-                            ease: 'power1.in',
+                            duration: 0.5, // Увеличили длительность для плавности
+                            ease: 'power2.in', // Изменили тип easing для более плавной анимации
                             onComplete: () => {
                                 isExpanded.value = false;
                                 detailsElement.value!.style.display = 'none';
