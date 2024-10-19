@@ -1,0 +1,12 @@
+:root {
+  --font-family: 'Helvetica';
+  --background-color: #f4f4f4;
+  --text-color: #333;
+  --primary-color: #000000;
+  --secondary-color: grey;
+  --border-color: #ddd;
+  --sumerian-text-color: #555;
+  --translation-color: #777;
+  --explanation-bg-color: #eef;
+  --toggle-button-color: #333;
+}
