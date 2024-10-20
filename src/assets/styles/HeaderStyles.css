@@ -2,103 +2,86 @@
 
 /* Стили для Header */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px;
-    background-color: var(--background-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: var(--background-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-left h1 {
-    margin: 0;
-    font-size: 24px;
-    color: var(--primary-color);
+  margin: 0;
+  font-size: 24px;
+  color: var(--primary-color);
 }
 
 .header-right {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 /* Кнопка переключения темы */
 .toggle-theme {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    margin-left: 16px;
-    transition: transform 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 16px;
+  transition: transform 0.3s ease;
 }
 
 .toggle-theme:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .toggle-theme img {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 /* Стили для переключателя языка */
 .language-switcher {
-    position: relative;
-    display: flex;
-    background-color: #e0e0e0;
-    border-radius: 16px;
-    padding: 4px;
-    margin-left: 16px;
+  position: relative;
+  display: flex;
+  background-color: #e0e0e0;
+  border-radius: 16px;
+  padding: 4px;
+  margin-left: 16px;
 }
 
 .highlight {
-    position: absolute;
-    top: 4px;
-    bottom: 4px;
-    left: 0;
-    background-color: #6200ee; /* Цвет подсветки */
-    border-radius: 12px;
-    z-index: 0;
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  background-color: #6200ee; /* Цвет подсветки */
+  border-radius: 12px;
+  z-index: 0;
+  will-change: transform;
 }
 
 .language-button {
-    background: none;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 12px;
-    transition: color 0.3s ease;
-    font-size: 16px;
-    z-index: 1;
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: color 0.3s ease;
+  font-size: 16px;
+  z-index: 1;
 }
 
 .language-button.active {
-    color: #ffffff;
-    font-weight: bold;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .language-button:not(.active) {
-    color: #000000;
-}
-
-/* Стили для кнопок раскрытия и закрытия пояснений */
-.toggle-details {
-    background: none; /* Убираем фон */
-    border: none;     /* Убираем обводку */
-    cursor: pointer;
-    padding: 0;       /* Убираем внутренние отступы */
-    margin-left: 8px; /* Отступ слева для иконки */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.toggle-details img {
-    filter: none;      /* Удаляем фильтр invert, чтобы иконки отображались в оригинальных цветах */
-    width: 20px;       /* Размер иконок */
-    height: 20px;
+  color: #000000;
 }
 
 /* Убедимся, что кнопки языка не влияют на расположение иконок */
 .header-right .language-button img {
-    filter: none; /* Убираем фильтр, если иконки есть */
+  filter: none; /* Убираем фильтр, если иконки есть */
 }

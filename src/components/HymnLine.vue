@@ -1,5 +1,3 @@
-<!-- src/components/HymnLine.vue -->
-
 <template>
     <div class="translation-line" :style="{ opacity: isActive || !activeLineNumber ? 1 : 0.5 }">
         <span class="translation-text">{{ line.translation }}</span>
@@ -74,21 +72,28 @@ export default defineComponent({
                 if (detailsElement.value) {
                     if (newVal) {
                         isExpanded.value = true;
-                        gsap.to(detailsElement.value, {
-                            height: 'auto',
-                            opacity: 1,
-                            duration: 0.5, // Увеличили длительность для плавности
-                            ease: 'power2.out', // Изменили тип easing для более плавной анимации
-                            onStart: () => {
-                                detailsElement.value!.style.display = 'block';
-                            },
-                        });
+                        gsap.fromTo(
+                            detailsElement.value,
+                            { height: 0, opacity: 0 },
+                            {
+                                height: 'auto',
+                                opacity: 1,
+                                duration: 0.3,
+                                ease: 'power2.out',
+                                onStart: () => {
+                                    detailsElement.value!.style.display = 'block';
+                                },
+                                onComplete: () => {
+                                    detailsElement.value!.style.height = 'auto';
+                                },
+                            }
+                        );
                     } else {
                         gsap.to(detailsElement.value, {
                             height: 0,
                             opacity: 0,
-                            duration: 0.5, // Увеличили длительность для плавности
-                            ease: 'power2.in', // Изменили тип easing для более плавной анимации
+                            duration: 0.3,
+                            ease: 'power2.in',
                             onComplete: () => {
                                 isExpanded.value = false;
                                 detailsElement.value!.style.display = 'none';
@@ -126,4 +131,36 @@ export default defineComponent({
 });
 </script>
 
-<style scoped src="../assets/styles/HeaderStyles.css"></style>
+<style scoped>
+.translation-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.translation-text {
+    flex: 1;
+}
+
+.toggle-details {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-details img {
+    width: 20px;
+    height: 20px;
+}
+
+.details {
+    overflow: hidden;
+    /* Добавлено для плавной анимации высоты */
+}
+</style>
