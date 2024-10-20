@@ -70,4 +70,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped src="../assets/styles/HeaderStyles.css"></style>
+<style scoped src="@/assets/styles/HeaderStyles.css"></style>

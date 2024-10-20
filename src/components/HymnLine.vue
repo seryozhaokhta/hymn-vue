@@ -1,3 +1,5 @@
+<!-- src/components/HymnLine.vue -->
+
 <template>
     <div class="translation-line" :style="{ opacity: isActive || !activeLineNumber ? 1 : 0.5 }">
         <span class="translation-text">{{ line.translation }}</span>
@@ -133,7 +135,7 @@ export default defineComponent({
 
 <style scoped>
 .translation-line {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: space-between;
     padding: 8px 0;
