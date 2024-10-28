@@ -1,5 +1,4 @@
 <!-- src/components/HymnLine.vue -->
-
 <template>
     <div class="translation-line" :style="{ opacity: isActive || !activeLineNumber ? 1 : 0.5 }">
         <span class="translation-text">{{ line.translation }}</span>
@@ -8,8 +7,8 @@
         </button>
     </div>
     <div class="details" ref="detailsElement">
-        <p class="sumerian-text">{{ line.sumerian_text }}</p>
-        <p class="transliteration">{{ line.transliterations.transliteration }}</p>
+        <SumerianTransliteration :sumerianText="line.sumerian_text"
+            :transliterationText="line.transliterations.transliteration" />
         <p class="word-by-word">{{ line.transliterations.word_by_word }}</p>
         <p class="simplified">{{ line.transliterations.simplified }}</p>
         <div class="explanation">
@@ -32,6 +31,7 @@ import gsap from 'gsap';
 
 import expandIcon from '@/assets/icons/expand-line.svg';
 import hideIcon from '@/assets/icons/hide-line.svg';
+import SumerianTransliteration from './SumerianTransliteration.vue';
 
 interface Transliterations {
     transliteration: string;
@@ -49,6 +49,9 @@ interface HymnLineData {
 
 export default defineComponent({
     name: 'HymnLine',
+    components: {
+        SumerianTransliteration,
+    },
     props: {
         line: {
             type: Object as PropType<HymnLineData>,

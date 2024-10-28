@@ -22,6 +22,7 @@ h2 {
 
 .sumerian-text {
   color: var(--sumerian-text-color);
+  letter-spacing: 0.1em; /* Добавляем межбуквенный интервал для раздвижения символов */
 }
 
 .toggle-details img {
@@ -41,4 +42,34 @@ body.dark .toggle-details img {
 body.dark .button,
 body.dark .toggle-theme img {
   filter: invert(1);
+}
+
+.highlighted-symbol {
+  color: var(--primary-color);
+}
+
+/* Подсветка транслитерации при наведении на символ */
+.highlighted-translit {
+  background-color: yellow;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: var(
+    --highlighted-translit-text-color
+  ); /* Используем новую переменную */
+}
+
+.transliteration-text span {
+  transition: background-color 0.3s ease;
+  margin-right: 4px; /* Добавляем правый отступ */
+}
+
+.transliteration-text span:last-child {
+  margin-right: 0; /* Убираем отступ у последнего слова */
+}
+
+/* Стиль для подстрочных символов */
+sub {
+  font-size: 0.75em;
+  vertical-align: sub;
+  color: var(--primary-color); /* Можно изменить цвет субскрипта по желанию */
 }

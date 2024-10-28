@@ -1,10 +1,10 @@
 /* src/assets/styles/variables.css */
 
 /* Импортируем шрифт Roboto с поддержкой кириллицы */
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 :root {
-  --font-family: 'Roboto', sans-serif;
+  --font-family: "Roboto", sans-serif;
   --background-color: #ffffff;
   --text-color: #333333;
   --primary-color: #6200ee; /* Основной цвет для заголовков и активных элементов */
@@ -14,6 +14,7 @@
   --translation-color: #777777;
   --explanation-bg-color: #eef;
   --toggle-button-color: #333333;
+  --highlighted-translit-text-color: #777777; /* Цвет текста в светлом режиме */
 }
 
 /* Тёмный режим */
@@ -24,4 +25,5 @@ body.dark {
   --sumerian-text-color: #aaaaaa;
   --translation-color: #cccccc;
   --explanation-bg-color: #333333;
+  --highlighted-translit-text-color: #000000; /* Цвет текста в тёмном режиме */
 }
