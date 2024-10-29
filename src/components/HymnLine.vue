@@ -1,4 +1,5 @@
 <!-- src/components/HymnLine.vue -->
+
 <template>
     <div class="translation-line" :style="{ opacity: isActive || !activeLineNumber ? 1 : 0.5 }">
         <span class="translation-text">{{ line.translation }}</span>
@@ -8,7 +9,8 @@
     </div>
     <div class="details" ref="detailsElement">
         <SumerianTransliteration :sumerianText="line.sumerian_text"
-            :transliterationText="line.transliterations.transliteration" />
+            :transliterationText="line.transliterations.transliteration"
+            :morphemeToSymbolIndices="line.morpheme_to_symbol_indices" />
         <p class="word-by-word">{{ line.transliterations.word_by_word }}</p>
         <p class="simplified">{{ line.transliterations.simplified }}</p>
         <div class="explanation">
@@ -43,6 +45,7 @@ interface HymnLineData {
     number: string;
     sumerian_text: string;
     transliterations: Transliterations;
+    morpheme_to_symbol_indices?: number[][]; // Сделано опциональным
     translation: string;
     explanation: string;
 }

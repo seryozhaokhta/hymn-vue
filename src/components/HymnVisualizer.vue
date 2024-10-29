@@ -27,6 +27,7 @@ interface HymnLineData {
     number: string;
     sumerian_text: string;
     transliterations: Transliterations;
+    morpheme_to_symbol_indices?: number[][]; // Сделано опциональным
     translation: string;
     explanation: string;
 }

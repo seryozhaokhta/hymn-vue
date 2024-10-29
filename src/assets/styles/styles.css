@@ -53,9 +53,7 @@ body.dark .toggle-theme img {
   background-color: yellow;
   padding: 2px 4px;
   border-radius: 4px;
-  color: var(
-    --highlighted-translit-text-color
-  ); /* Используем новую переменную */
+  color: var(--highlighted-translit-text-color); /* Используем новую переменную */
 }
 
 .transliteration-text span {
@@ -72,4 +70,18 @@ sub {
   font-size: 0.75em;
   vertical-align: sub;
   color: var(--primary-color); /* Можно изменить цвет субскрипта по желанию */
+}
+
+/* Стиль для надстрочных символов */
+sup {
+  font-size: 0.75em;
+  vertical-align: super;
+  color: var(--primary-color); /* Можно изменить цвет суперкрипта по желанию */
+}
+
+/* Стили для разделителей */
+.transliteration-text span.separator {
+  cursor: default;
+  background-color: transparent;
+  color: var(--transliteration-color);
 }

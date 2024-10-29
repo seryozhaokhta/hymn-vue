@@ -1,4 +1,5 @@
 <!-- src/App.vue -->
+
 <template>
   <div id="app">
     <HeaderComponent />
